@@ -1,0 +1,36 @@
+1. Management & User Tables
+TaxDatabase: TaxID (PK), TaxName, TaxPercentage, EffectiveFrom, EffectiveTo
+
+Users: userID (PK), userName, userPhone, userAddress, totalOrders
+
+Staff: staffID (PK), staffName, staffRole, staffPhone, staffSalary, staffStatus
+
+LOGINREST: LoginID (PK), UserName, Password, Role, CreatedAt
+
+2. Menu & Inventory Tables
+Categories: catID (PK), catName, catStatus, catImage
+
+Products: prodID (PK), prodName, prodPrice, categoryID (FK), prodStatus, prodImage
+
+Stock: stockID (PK), itemName, category, cartons, qtyPerCarton, totalQty, buyingCost, unitCost, lowStockLevel, expiryDate, entryDate, sellingPrice
+
+3. Operational Tables (Orders & Tables)
+RESTTables: tableID (PK), tableName, tableStatus, capacity
+
+Orders: OrderID (PK), OrderNo, OrderType, TableID, WaiterID, OrderStatus, OrderTime
+
+OrderMain: MainID (PK), OrderDate, TableID, WaiterID, OrderType, TotalAmount, Status, UserID
+
+KOT (Kitchen Order Ticket): KOTID (PK), OrderID, KOTTime, Status
+
+4. Order Details & History
+OrderDetails: OrderDetailID (PK), OrderID (FK), ProductID (FK), Qty, Price
+
+OrderItems: OrderItemID (PK), OrderID, ProdID, Qty, Price
+
+Payments: PaymentID (PK), OrderID, TotalAmount, Discount, Received, ChangeAmount, PaymentTime
+
+5. Billing History
+BillHistory: BillID (PK), OrderID, BillDate, TableID, WaiterID, RiderID, CashierID, OrderType, GrossTotal, TaxAmount, DiscountAmount, NetTotal, ReceivedAmount, ChangeAmount
+
+BillHistoryDetails: BillDetailID (PK), BillID (FK), ProductID, ProductName, Qty, Price, Amount
